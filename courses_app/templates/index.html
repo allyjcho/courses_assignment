@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Add a new course</h1>
+
+    {% if courses %}
+    <ul class="courses">    
+    {% for course in courses %}    
+        <li>{{ course }}</li>    
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="/add" method="POST">
+        {% csrf_token%}
+    <table>
+        <tr>
+            <th>Name:</th>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td><input type="textarea" name="desc"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Add">
+    </form>
+
+    <h1>Courses</h1>
+    <table>
+        <tr>
+            <th>Course Name</th>
+            <th>Description</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+        </tr>
+    </table>
+</body>
+</html>
